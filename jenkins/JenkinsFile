@@ -10,9 +10,14 @@ pipeline {
                     reuseNode true
                 }
             }
+
+            environment {
+                HOME = "${WORKSPACE}"
+                GOCACHE = "${WORKSPACE}/.gocache"
+                GOMODCACHE = "${WORKSPACE}/.gomodcache"
+            }
             steps {
                 dir ('bugtracker-backend'){
-                    withEnv(["HOME=${WORKSPACE}"]) {
                     sh 'go test -v ./...'
                     }
                 }

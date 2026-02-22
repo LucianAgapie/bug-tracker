@@ -99,7 +99,9 @@ pipeline {
             }
             steps {
                 dir('test-api'){
-                    sh 'nmx wait-port http://localhost:8080/api/health - t 30000'
+                    sh 'npx wait-port localhost:8080 -t 30000'
+                    sh 'curl http://localhost:8080/api/health'
+                    
                     sh 'npm ci'
                     sh 'npx playwright test'
                 }

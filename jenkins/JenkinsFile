@@ -118,6 +118,7 @@ pipeline {
                             npm ci
                         '''
                     sh 'npx playwright test'
+                    sh 'find . -name results.xml'
                 }
             }
             post {

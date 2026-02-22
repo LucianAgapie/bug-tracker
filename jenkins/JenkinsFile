@@ -101,14 +101,20 @@ pipeline {
                 docker {
                     image 'mcr.microsoft.com/playwright:v1.50.0-jammy'
                     reuseNode true
-                    args "-u 0 --network=host -v ${WORKSPACE}/tests-api:/workspace -w /workspace"
+                    args '-u 0 --network=host'
                 }
             }
             steps {
-                dir('/workspace'){
+                // Checkout inside the container
+                checkout scm
+
+                dir('tests-api'){
                     sh 'npx wait-port localhost:8080 -t 30000'
                     sh 'curl http://localhost:8080/api/health'
                     sh '''
+                            pwd
+                            ls -la
+                            ls -la /workspace/tests-api
                             npm ci
                             npx playwright install --with-deps
                         '''

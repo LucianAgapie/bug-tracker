@@ -115,7 +115,7 @@ pipeline {
                             pwd
                             ls -la
                             npm ci
-                            //npx playwright install --with-deps
+                            npx playwright install --with-deps
                         '''
                     sh 'npx playwright test'
                     sh 'ls -la'

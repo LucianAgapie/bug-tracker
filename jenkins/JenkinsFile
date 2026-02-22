@@ -114,11 +114,11 @@ pipeline {
                     sh '''
                             pwd
                             ls -la
-                            ls -la /workspace/tests-api
                             npm ci
-                            npx playwright install --with-deps
+                            //npx playwright install --with-deps
                         '''
                     sh 'npx playwright test'
+                    sh 'ls -la'
                     sh 'find . -name results.xml'
                 }
             }

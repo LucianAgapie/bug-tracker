@@ -124,10 +124,11 @@ pipeline {
             post {
                 always {
                     junit 'tests-api/test-results/results.xml'
-                    publishHTML target: [
+
+                    publishHTML target:[
                         reportDir: 'tests-api/playwright-report'
                         reportFiles: 'index.html'
-                        reportName: 'Playwaright API Test Report'
+                        reportName: 'Playwright API Test Report'
                     ]
                 }
             }

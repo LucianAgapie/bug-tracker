@@ -45,15 +45,5 @@
     "suiteNameTemplate": "{filepath}",
     "classNameTemplate": "{classname}",
     "titleTemplate": "{title}"
-  },
-
-  "jest": {
-  "reporters": [
-    "default",
-    ["jest-junit", {
-      "outputDirectory": ".",
-      "outputName": "test-results.xml"
-    }]
-  ]
-}
+  }
 }

@@ -105,6 +105,9 @@ pipeline {
                 }
             }
             steps {
+                // Checkout inside the container
+                checkout scm
+
                 dir('test-api'){
                     sh 'npx wait-port localhost:8080 -t 30000'
                     sh 'curl http://localhost:8080/api/health'
